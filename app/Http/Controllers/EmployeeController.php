@@ -16,46 +16,40 @@ class EmployeeController extends Controller
 		return view('Employee.index')->with('employees',$employees);
 	}
 
-    public function create()
-    {
-    	return view('Employee.create');
-    }
+  public function create()
+  {
+  	return view('Employee.create');
+  }
 
-    public function store(StoreRequest $request)
-    {      
-
-       //dd($request);
-
-		$employee=new Employee;
-		$employee->name=$request->name;
-		$employee->phonenumber=$request->phonenumber;
-		$employee->email=$request->email;
-		$employee->amount=$request->amount;
-		$employee->address=$request->address;
+  public function store(StoreRequest $request)
+  {
+		$employee								=	new Employee;
+		$employee->name					=	$request->name;
+		$employee->phonenumber	=	$request->phonenumber;
+		$employee->email				=	$request->email;
+		$employee->amount				=	$request->amount;
+		$employee->address			=	$request->address;
 		$employee->save();
+		
 		return redirect('employee');
+  }
 
-	
-    }
+	public function show($id)
+	{
+		$employee = Employee::findOrFail($id);
+		return view('Employee.details')->with('employee',$employee);
+	}
 
-    public function edit($id)
-    {
+  public function edit($id)
+  {
+  	$employee=Employee::findOrFail($id);
+  	return view('Employee.edit')->with('employee',$employee);
+  }
 
-    	$employee=Employee::findOrFail($id);
-
-    	return view('Employee.edit')->with('employee',$employee);
-    }
-
-    public function update(UpdateRequest $request)
-    {    
-
-
-    	
-    	$id = $request->segment(3);
-    	$employee = Employee::findOrFail($id);
-
-    	$employee->name = $request->name;
-
+	public function update(UpdateRequest $request,$id)
+	{
+		$employee = Employee::findOrFail($id);
+		$employee->name = $request->name;
 		$employee->phonenumber = $request->phonenumber;
 		$employee->email = $request->email;
 		$employee->amount=$request->amount;
@@ -63,41 +57,14 @@ class EmployeeController extends Controller
 		$employee->save();
 
 		return redirect('employee');
+	}
+
+  public function delete(Request $request,$id)
+  {
+  	$employee =  Employee::findOrFail($id);
+  	$employee->delete();
+  	return redirect('employee');
+  }
 
 
-    }
-
-    public function delete(Request $request)
-    {
-    	$id =  $request->segment(3);
-    	$employee =  Employee::findOrFail($id);
-
-    	//dd($employee);
-    	$employee->delete();
-
-    	return redirect('employee');
-    }
-    
-
-    // public function salary()
-    // {  
-
-
-    // 	$employees = Employee::all();
-          
-
-    //       return view('Employee.salary')->with('employees',$employees);
-
-    // }
-    // public function salary(SalaryRequest $request) 
-    // {  
-
-    //    $salary  =     new Salary;
-    //    $salary->employee_id =  $request->employee_id;
-    //    $salary->salary    =    $request->salary;
-    //    $salary->save();
-
-    // }
-
-  
 }
