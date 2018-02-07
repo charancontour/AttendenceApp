@@ -24,11 +24,12 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
          return [
-           'name' => 'required|max:255|unique:employees,name,'.$this->segment(3),
-           'phonenumber' =>   'required|max:255|unique:employees,phonenumber',
-           'amount' => 'required',
-           'email' =>   'required|email',
-           'address' =>'required',      
+           'name'                 =>      'required|max:255|unique:employees,name,'.$this->segment(3),
+           'phonenumber'          =>      'required|max:255|unique:employees,phonenumber,'.$this->segment(3),
+           'monthlysalary'        =>      'required',
+           'email'                =>      'required|email',
+           'monthlyreductions'    =>      'required',
+           'address'              =>      'required',      
         ];
     }
 }

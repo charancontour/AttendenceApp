@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-
+<div class="container">
 
  <form class="form-horizontal" method="post" action="{{Request::url()}}">
  	{{csrf_field()}}
@@ -50,11 +50,11 @@
 <div class="form-group">
 	    <label class="control-label col-sm-2" >Salary</label>
 			    <div class="col-sm-10">
-			      <textarea class="form-control" name="amount" placeholder="Enter salary" ></textarea>
+			      <textarea class="form-control" name="monthlysalary" placeholder="Enter salary" ></textarea>
                    
-                   @if ($errors->has('amount'))
+                   @if ($errors->has('monthlysalary'))
 	                       <span class="help-block">
-	                           <strong>{{ $errors->first('amount') }}</strong>
+	                           <strong>{{ $errors->first('monthlysalary') }}</strong>
 	                        </span>
 	                @endif
 
@@ -80,9 +80,26 @@
 	  </div>
 
 	  <div class="form-group">
+
+	    <label class="control-label col-sm-2" >Monthly Reductions</label>
+			    <div class="col-sm-10">
+			      <textarea class="form-control" name="monthlyreductions" placeholder="Enter monthlyreductions of an employeee" ></textarea>
+                   
+                   @if ($errors->has('monthlyreductions'))
+	                       <span class="help-block">
+	                           <strong>{{ $errors->first('monthlyreductions') }}</strong>
+	                        </span>
+	                @endif
+
+			    </div>
+	  </div>
+
+
+	  <div class="form-group">
 	    <div class="col-sm-offset-2 col-sm-10">
 	      <button type="submit" class="btn btn-default">Create</button>
 	    </div>
 	  </div>
 </form> 
+</div>
 @endsection

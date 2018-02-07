@@ -19,7 +19,8 @@ class CreateEmployeesTable extends Migration
             $table->string('phonenumber');
             $table->string('email');
             $table->text('address');
-            $table->double('amount', 8, 2);
+            $table->double('monthlysalary', 8, 2);
+            $table->double('monthlyreductions',8,2);
             $table->timestamps();
         });
     }

@@ -19,6 +19,7 @@ class CreateEmployeeAttendenceTable extends Migration
             $table->integer('attendence_id')->unsigned();
             $table->foreign('employee_id')->references('id')->on('employees');
             $table->foreign('attendence_id')->references('id')->on('attendences');
+            
             $table->timestamps();
         });
     }

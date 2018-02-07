@@ -1,9 +1,15 @@
 @extends('layouts.app')
 @section('content')
 
+<div class="row">
+		<div class="col-md-12">
+			<a href="/attendence/create">
+				<button type="button" class="btn btn-primary">Create Employee Attendence</button>
+			</a>
 
-<script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+		</div>
+		
+	</div>
 
 <table class="table">
 	<thead>
@@ -13,7 +19,8 @@
            	<th>phonenumber</th>
            	<th>mail</th>
            	<th>address</th>
-           	<th>salary</th>
+           	<th>MonthlySalary</th>
+           	<th>MonthlyReductions</th>
            	<th>Actions</th>
 		</tr>
 
@@ -27,35 +34,33 @@
 			<td>{{$employee->phonenumber}}</td>
 			<td>{{$employee->email}}</td>
 			<td>{{$employee->address}}</td>
-			<td>{{$employee->amount}}</td>
-            <td>
-                   <div class="" role="group" aria-label="...">
-					  <div class="btn-group" role="group">
-					  	   <a href="{{url('employee/edit/'.$employee->id)}}">
-					              <button type="button" class="btn btn-default">Edit</button>
-					       </a>
-					  </div>
+			<td>{{$employee->monthlysalary}}</td>
+			<td>{{$employee->monthlyreductions}}</td>
+      <td>
+        <div class="" role="group" aria-label="...">
+					<div class="btn-group" role="group">
+					  <a href="{{url('employee/view/'.$employee->id)}}">
+					     <button type="button" class="btn btn-default">View</button>
+					  </a>
+					</div>
+					
+					<div class="btn-group" role="group">
+					  <a href="{{url('employee/edit/'.$employee->id)}}">
+					     <button type="button" class="btn btn-default">Edit</button>
+					  </a>
+					</div>
+
+				  <div class="btn-group" role="group">
+				  	 <a href="{{url('employee/delete/'.$employee->id)}}">
+				       <button type="button" class="btn btn-default">Delete</button>
+				     </a>
+				  </div>
 
 
-					  <div class="btn-group" role="group">
-					  	 <a href="{{url('employee/delete/'.$employee->id)}}">
-					       <button type="button" class="btn btn-default">Delete</button>
-					     </a>
-					  </div>
-					  <div class="btn-group" role="group">
-					  	 <a href="{{url('attendence/employees')}}">
-					       <button type="button" class="btn btn-default">Attendence</button>
-					     </a>
-
-                    </div>
-
-            </td>
+				</div>
+      </td>
 		</tr>
 		@endforeach
 	</tbody>
-
-
 </table>
-</div>
-
 @endsection

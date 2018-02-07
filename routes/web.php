@@ -20,26 +20,24 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('employee')->group(function () {
-    Route::get('','EmployeeController@index');
-    Route::get('/create','EmployeeController@create');
-    Route::post('/create','EmployeeController@store');
-    Route::get('/edit/{id}','EmployeeController@edit');
-    Route::post('/edit/{id}','EmployeeController@update');
-    Route::get('/delete/{id}','EmployeeController@delete');
-
-    Route::get('/salary','EmployeeController@salary');
-    Route::post('/salary','EmployeeController@salary');
-
+  Route::get('','EmployeeController@index');
+  Route::get('/create','EmployeeController@create');
+  Route::post('/create','EmployeeController@store');
+  Route::get('view/{id}','EmployeeController@show');
+  Route::get('/edit/{id}','EmployeeController@edit');
+  Route::post('/edit/{id}','EmployeeController@update');
+  Route::get('/delete/{id}','EmployeeController@delete');
 });
 
- 
+
 Route::prefix('attendence')->group(function () {
-    Route::get('/create','AttendenceController@create');
-    Route::post('/create','AttendenceController@store');
-    Route::get('','AttendenceController@index');
-    Route::get('/edit/{id}','AttendenceController@edit');
-    Route::post('/edit/{id}','AttendenceController@update');
-    Route::get('/delete/{id}','AttendenceController@delete');
-    Route::get('/employees','AttendenceController@display');
+  Route::get('','AttendenceController@index');
+  Route::get('/create','AttendenceController@create');
+  Route::post('/create','AttendenceController@store');
+  Route::get('/edit/{id}','AttendenceController@edit');
+  Route::post('/edit/{id}','AttendenceController@update');
+  Route::get('/delete/{id}','AttendenceController@delete');
+  Route::get('/employees','AttendenceController@display');
 
 });
+

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="page-header">
-  <h1>UpdateEmployee</h1>
+  <h1>Update Employee</h1>
 </div>
 
 
@@ -53,11 +53,11 @@
        <div class="form-group">
 	    <label class="control-label col-sm-2" >salary</label>
 			    <div class="col-sm-10">
-			      <textarea class="form-control" name="amount" placeholder="Enter address">{{$employee->amount}}</textarea>
+			      <textarea class="form-control" name="monthlysalary" placeholder="Enter salary">{{$employee->monthlysalary}}</textarea>
                    
-                   @if ($errors->has('amount'))
+                   @if ($errors->has('monthlysalary'))
 	                       <span class="help-block">
-	                           <strong>{{ $errors->first('amount') }}</strong>
+	                           <strong>{{ $errors->first('monthlysalary') }}</strong>
 	                        </span>
 	                @endif
 
@@ -79,6 +79,22 @@
 
 			    </div>
 	  </div>
+
+	   <div class="form-group">
+
+	    <label class="control-label col-sm-2" >Monthly Reductions</label>
+			    <div class="col-sm-10">
+			      <textarea class="form-control" name="monthlyreductions" placeholder="Enter monthlyreductions of an employeee" >{{$employee->monthlyreductions}}</textarea>
+                   
+                   @if ($errors->has('monthlyreductions'))
+	                       <span class="help-block">
+	                           <strong>{{ $errors->first('monthlyreductions') }}</strong>
+	                        </span>
+	                @endif
+
+			    </div>
+	  </div>
+
 
 	  <div class="form-group">
 	    <div class="col-sm-offset-2 col-sm-10">
