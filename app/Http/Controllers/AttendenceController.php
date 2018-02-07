@@ -7,6 +7,7 @@ use App\Attendence;
 use App\Employee;
 use App\Http\Requests\Attendence\StoreRequest;
 use App\Http\Requests\Attendence\UpdateRequest;
+use App\Date;
 class AttendenceController extends Controller
 {
 	public function index()
@@ -36,7 +37,8 @@ class AttendenceController extends Controller
     // $employees[] = $this->request->get( 'employee_ids' );
 
      $attendence->employees()->sync($request->employee_ids);
-     return redirect('employee');
+
+     return redirect('attendence');
     }
 
     public function edit($id)
@@ -66,12 +68,9 @@ class AttendenceController extends Controller
     {  
         // dd('hii');
         $id=$request->segment(3);
-
         $attendence=Attendence::with('employees')->find($id);
-         
         $attendence->employees()->detach($request->employee_ids);
-
-       $attendence->delete();
+        $attendence->delete();
 
         return redirect('attendence');
     }
@@ -91,19 +90,22 @@ class AttendenceController extends Controller
             $to_date = date('Y-m-d');
         }
 
+        if($request->has('year') && $request->has('month'))
+        {
+          $from_date = $request->year . '-' . $request->month . '-01';
+          $to_date = date('Y-m-t',strtotime($from_date));
+        }
+
         $employees=Employee::with(['attendences'=> function($q) use($from_date,$to_date){
             $q->where('date','>=',$from_date);
             $q->where('date','<=',$to_date);
         }])->get();
 
         $working_days = Attendence::where('workingday',1)->where('date','<=',$to_date)
-                                    ->where('date',$from_date)
-                                    ->count();
-
-        // dd($employees);
-        // $month=$request->month;
-        
-        return view('attendence.display')->with('employees',$employees)->with('working_days',$working_days);
+                                    ->where('date','>=',$from_date)->count();
+         
+        return view('attendence.display')->with('employees',$employees)->with('working_days',$working_days) ;
+                                                                            
 
     }
 
