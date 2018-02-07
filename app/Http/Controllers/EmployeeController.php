@@ -21,8 +21,11 @@ class EmployeeController extends Controller
     return view('Employee.create');
   }
 
+
+
   public function store(StoreRequest $request)
   {
+
         $employee                        =   new Employee;
         $employee->name                  =   $request->name;
         $employee->phonenumber           =   $request->phonenumber;
@@ -55,7 +58,7 @@ class EmployeeController extends Controller
         $employee->email                =  $request->email;
         $employee->monthlysalary        =  $request->monthlysalary;
         $employee->address              =  $request->address;
-        $employee->monthlyreductions    =   $request->monthlyreductions; 
+        $employee->monthlyreductions    =  $request->monthlyreductions; 
         $employee->save();
 
         return redirect('employee');
@@ -68,7 +71,6 @@ class EmployeeController extends Controller
     return redirect('employee');
   }
 
+	
 
-    
-  
 }

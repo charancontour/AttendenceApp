@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
 
 <div class="row">
@@ -10,7 +11,11 @@
 		</div>
 		
 	</div>
+@section('styleSheets')
 
+@endsection
+
+@section('content')
 <table class="table">
 	<thead>
 
@@ -36,6 +41,7 @@
 			<td>{{$employee->address}}</td>
 			<td>{{$employee->monthlysalary}}</td>
 			<td>{{$employee->monthlyreductions}}</td>
+	
       <td>
         <div class="" role="group" aria-label="...">
 					<div class="btn-group" role="group">
@@ -56,11 +62,13 @@
 				     </a>
 				  </div>
 
-
 				</div>
       </td>
 		</tr>
 		@endforeach
 	</tbody>
 </table>
+
+@endsection
+
 @endsection

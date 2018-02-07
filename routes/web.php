@@ -40,4 +40,3 @@ Route::prefix('attendence')->group(function () {
   Route::get('/employees','AttendenceController@display');
 
 });
-
