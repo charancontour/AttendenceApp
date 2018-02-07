@@ -7,6 +7,9 @@
 	}
 </style>
 @stop
+
+
+
 @section('content')
 <div class="container">
 	<div class="row">
@@ -41,13 +44,6 @@
 						  	   <a href="{{url('attendence/edit/'.$attendence->id)}}">
 						              <button type="button" class="btn btn-default btn-small">Edit</button>
 						       </a>
-						  </div>
-
-
-						  <div class="btn-group" role="group">
-						  	 <a href="{{url('attendence/delete/'.$attendence->id)}}">
-						       <button type="button" class="btn btn-danger btn-small">Delete</button>
-						     </a>
 						  </div>
 
 	                    </div>

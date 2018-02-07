@@ -53,7 +53,9 @@
        <div class="form-group">
 	    <label class="control-label col-sm-2" >salary</label>
 			    <div class="col-sm-10">
-			      <textarea class="form-control" name="monthlysalary" placeholder="Enter salary">{{$employee->monthlysalary}}</textarea>
+			      
+
+			      <input type="text" name="monthlysalary" placeholder="Enter salary" value="{{$employee->monthlysalary}}">
                    
                    @if ($errors->has('monthlysalary'))
 	                       <span class="help-block">
@@ -84,7 +86,8 @@
 
 	    <label class="control-label col-sm-2" >Monthly Reductions</label>
 			    <div class="col-sm-10">
-			      <textarea class="form-control" name="monthlyreductions" placeholder="Enter monthlyreductions of an employeee" >{{$employee->monthlyreductions}}</textarea>
+
+			      <input type="text" name="monthlyreductions" placeholder="Enter monthlyreductions" value="{{$employee->monthlyreductions}}">
                    
                    @if ($errors->has('monthlyreductions'))
 	                       <span class="help-block">

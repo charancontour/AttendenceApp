@@ -20,23 +20,28 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('employee')->group(function () {
-  Route::get('','EmployeeController@index');
-  Route::get('/create','EmployeeController@create');
-  Route::post('/create','EmployeeController@store');
-  Route::get('view/{id}','EmployeeController@show');
-  Route::get('/edit/{id}','EmployeeController@edit');
-  Route::post('/edit/{id}','EmployeeController@update');
-  Route::get('/delete/{id}','EmployeeController@delete');
+  Route::get('','EmployeeController@index')->middleware('auth');
+  Route::get('/create','EmployeeController@create')->middleware('auth');
+  Route::post('/create','EmployeeController@store')->middleware('auth');
+  Route::get('view/{id}','EmployeeController@show')->middleware('auth');
+  Route::get('/edit/{id}','EmployeeController@edit')->middleware('auth');
+  Route::post('/edit/{id}','EmployeeController@update')->middleware('auth');
+  Route::get('/delete/{id}','EmployeeController@delete')->middleware('auth');
+
 });
 
 
 Route::prefix('attendence')->group(function () {
-  Route::get('','AttendenceController@index');
-  Route::get('/create','AttendenceController@create');
-  Route::post('/create','AttendenceController@store');
-  Route::get('/edit/{id}','AttendenceController@edit');
-  Route::post('/edit/{id}','AttendenceController@update');
-  Route::get('/delete/{id}','AttendenceController@delete');
-  Route::get('/employees','AttendenceController@display');
+  Route::get('','AttendenceController@index')->middleware('auth');
+  Route::get('/create','AttendenceController@create')->middleware('auth');
+  Route::post('/create','AttendenceController@store')->middleware('auth');
+  Route::get('/edit/{id}','AttendenceController@edit')->middleware('auth');
+  Route::post('/edit/{id}','AttendenceController@update')->middleware('auth');
+  Route::get('/delete/{id}','AttendenceController@delete')->middleware('auth');
+  Route::get('/employees','AttendenceController@display')->middleware('auth');
+ 
 
+});
+Route::prefix('report')->group(function () {
+  Route::get('','ReportController@index')->middleware('auth');
 });

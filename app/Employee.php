@@ -13,10 +13,6 @@ class Employee extends Model
             return $this->belongsToMany('App\Attendence','employee_attendence');
 
     }
-    public function working_days()
-    {
-    	return $this->belongsToMany('App\Attendence','employee_attendence');
-    }
-
-    }
+   
+}
     

@@ -11,4 +11,5 @@ class Attendence extends Model
     {
          return $this->belongsToMany('App\Employee','employee_attendence');
     }
+   
 }

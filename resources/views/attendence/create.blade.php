@@ -10,44 +10,38 @@
 	              <h1>Create Employee Attendence</h1>
 	        </div>
 	        <table class="table table-bordered table-striped">
+			
 			<div>
-				
-	         <div width="10%">
-	         	
+			
 	         		<tr>
-				       		<td width="5%">	<label>Date</label></td>
+				       		<td width="20%">	<label>Date</label></td>
 
 				       		<td>	<input type="Date" name="date" /></td>
 	       			</tr>
 	         </div>
 					
-					<div>
-		      			<tr>
-					      	<td>	<label>WorkingDay</label></td>
-					      	<td>	<label><input type="checkbox" name="workingday" value="1">Yes</label>
+			<div>
+		      	<tr>
+					<td><label>WorkingDay</label></td>
+					     <td>	<label><input type="checkbox" name="workingday" value="1">Yes</label>
 					      		<br>
 					      		
-					      	<label><input type="checkbox" name="workingday" value="0">No</label></td>
-		      	    	</tr>
-	      			</div>
-		     </div>
+					     <label><input type="checkbox" name="workingday" value="0">No</label></td>
+		      	</tr>
+	      	</div>
+		     
+			<div >
+	            <tr>
+		            <td width="5%">
+			        	@foreach($employees as $employee)
 
-			
-			 <div width="10%">
-	              
-	          
-             <tr>
-             <td>
-	         @foreach($employees as $employee)
-
-	            	
-	               		<label><input type="checkbox" name="employee_ids[]" 
-	               			value="{{$employee->id}}">{{$employee->name}}</label><br>
-	            	
-
-	         @endforeach
-	    	 </td>
-			</tr>
+			            	
+			              	<label><input type="checkbox" name="employee_ids[]" 
+			               			value="{{$employee->id}}">{{$employee->name}}</label><br>
+			          
+			        	@endforeach
+			    	</td>
+				</tr>	
 	      	</div>
 
 	      	

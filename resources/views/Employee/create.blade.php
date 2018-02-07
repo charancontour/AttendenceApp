@@ -50,8 +50,7 @@
 <div class="form-group">
 	    <label class="control-label col-sm-2" >Salary</label>
 			    <div class="col-sm-10">
-			      <textarea class="form-control" name="monthlysalary" placeholder="Enter salary" ></textarea>
-                   
+			      <input type="text" name="monthlysalary" placeholder="Enter salary">
                    @if ($errors->has('monthlysalary'))
 	                       <span class="help-block">
 	                           <strong>{{ $errors->first('monthlysalary') }}</strong>
@@ -83,7 +82,8 @@
 
 	    <label class="control-label col-sm-2" >Monthly Reductions</label>
 			    <div class="col-sm-10">
-			      <textarea class="form-control" name="monthlyreductions" placeholder="Enter monthlyreductions of an employeee" ></textarea>
+			       <input type="text" name="monthlyreductions" placeholder="Enter monthlyreductions">
+			     
                    
                    @if ($errors->has('monthlyreductions'))
 	                       <span class="help-block">

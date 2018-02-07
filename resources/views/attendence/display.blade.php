@@ -9,10 +9,23 @@
 </style>
 @stop
 
+	
+
+
 @section('content')
 
+       
+<div class="row" >
+			<div class="col-md-12">
+				<a href="/attendence/create">
+					<button type="button" class="btn btn-primary">Create Employee Attendence</button>
+				</a>
 
+			</div>
+			
+</div>
 <div class="container">
+
 	<div class="row">
 			<form>
 				<input type="date" value="{{Request::get('from_date')}}" name="from_date">
@@ -53,7 +66,7 @@
 					<th>Number Of Working Days</th>
 		           	<th>Number of Presence Days</th>
 		           	<th>Number Of Absence Days</th>
-		           	<th>SalaryOf An Employee</th>
+		           	
 				</tr>
 
 			</thead>
@@ -68,7 +81,7 @@
 					<td>{{$employee->attendences->count()}}</td>
 
 					<td>{{$working_days - $employee->attendences->count() }}</td>
-
+					
 				</tr>
 				@endforeach
 
