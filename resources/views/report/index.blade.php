@@ -23,7 +23,9 @@
 		<tbody>
 			@foreach($monthlysalaries as $monthsalary)
 					<tr>
-						<td>{{$monthsalary->month}}</td>
+
+						<td></td>
+
 						@foreach($employees as $employee)
 							@if($monthsalary->employee_id==$employee->id)
 					
