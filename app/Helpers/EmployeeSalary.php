@@ -36,8 +36,8 @@ class EmployeeSalary
       $employee_month_salary->employee_id        = $employee->id;
       $employee_month_salary->present_days       = $employee->attendences->count();
       $employee_month_salary->total_working_days = $working_days;
-      $employee_month_salary->basic_salary       = $employee->monthlysalary;
-      $employee_month_salary->deduction          = $employee->monthlyreductions;
+      $employee_month_salary->basic_salary       = $employee->monthly_salary;
+      $employee_month_salary->deduction          = $employee->monthly_reductions;
       $employee_month_salary->net_salary         = ($employee_month_salary->present_days * ($employee_month_salary->basic_salary/$employee_month_salary->total_working_days)) - $employee_month_salary->deduction;
       $employee_month_salary->save();
     }

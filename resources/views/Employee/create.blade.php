@@ -20,10 +20,10 @@
 	  <div class="form-group">
 	    <label class="control-label col-sm-2" >PhoneNumber</label>
 		    <div class="col-sm-10">
-		      <input type=text" class="form-control" name="phonenumber" placeholder="Enter phonenumber" >
-			        @if ($errors->has('phonenumber'))
+		      <input type=text" class="form-control" name="phone_number" placeholder="Enter phonenumber" >
+			        @if ($errors->has('phone_number'))
 	                       <span class="help-block">
-	                           <strong>{{ $errors->first('phonenumber') }}</strong>
+	                           <strong>{{ $errors->first('phone_number') }}</strong>
 	                        </span>
 	                @endif
 
@@ -50,10 +50,10 @@
 <div class="form-group">
 	    <label class="control-label col-sm-2" >Salary</label>
 			    <div class="col-sm-10">
-			      <input type="text" name="monthlysalary" placeholder="Enter salary">
-                   @if ($errors->has('monthlysalary'))
+			      <input type="text" name="monthly_salary" placeholder="Enter salary">
+                   @if ($errors->has('monthly_salary'))
 	                       <span class="help-block">
-	                           <strong>{{ $errors->first('monthlysalary') }}</strong>
+	                           <strong>{{ $errors->first('monthly_salary') }}</strong>
 	                        </span>
 	                @endif
 
@@ -82,12 +82,12 @@
 
 	    <label class="control-label col-sm-2" >Monthly Reductions</label>
 			    <div class="col-sm-10">
-			       <input type="text" name="monthlyreductions" placeholder="Enter monthlyreductions">
+			       <input type="text" name="monthly_reductions" placeholder="Enter monthlyreductions">
 			     
                    
-                   @if ($errors->has('monthlyreductions'))
+                   @if ($errors->has('monthly_reductions'))
 	                       <span class="help-block">
-	                           <strong>{{ $errors->first('monthlyreductions') }}</strong>
+	                           <strong>{{ $errors->first('monthly_reductions') }}</strong>
 	                        </span>
 	                @endif
 

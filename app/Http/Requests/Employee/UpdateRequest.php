@@ -26,10 +26,10 @@ class UpdateRequest extends FormRequest
          return [
 
            'name'                 =>      'required|max:255|unique:employees,name,'.$this->segment(3),
-           'phonenumber'          =>      'required|max:255|unique:employees,phonenumber,'.$this->segment(3),
-           'monthlysalary'        =>      'required',
+           'phone_number'         =>      'required|max:255|unique:employees,phone_number,'.$this->segment(3),
+           'monthly_salary'       =>      'required',
            'email'                =>      'required|email',
-           'monthlyreductions'    =>      'required',
+           'monthly_reductions'   =>      'required',
            'address'              =>      'required',      
 
         ];

@@ -25,12 +25,12 @@ class StoreRequest extends FormRequest
     {
         // dd($this->all());
         return [
-           'name'               =>         'required|unique:employees,name|max:255',
-           'phonenumber'        =>         'required|unique:employees,phonenumber|max:255',
-           'email'              =>         'required|email',
-           'monthlysalary'      =>         'required',
-           'monthlyreductions'  =>         'required',
-           'address'            =>         'required',      
+           'name'               =>        'required|unique:employees,name|max:255',
+           'phone_number'       =>        'required|unique:employees,phone_number|max:255',
+           'email'              =>        'required|email',
+           'monthly_salary'     =>        'required',
+           'monthly_reductions' =>        'required',
+           'address'            =>        'required',      
         ];
     }
 }

@@ -22,7 +22,7 @@
           </tr>
           <tr>
             <td>Salary</td>
-            <td>{{$employee->salary}}</td>
+            <td>{{$employee->monthlysalary}}</td>
           </tr>
         </tbody>
       </table>

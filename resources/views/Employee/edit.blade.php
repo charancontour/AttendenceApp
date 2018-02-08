@@ -25,7 +25,7 @@
 	  <div class="form-group">
 	    <label class="control-label col-sm-2" >PhoneNumber</label>
 		    <div class="col-sm-10">
-		      <input type=text" class="form-control" name="phonenumber" placeholder="Enter phonenumber" value="{{$employee->phonenumber}}" >
+		      <input type=text" class="form-control" name="phone_number" placeholder="Enter phonenumber" value="{{$employee->phonenumber}}" >
 			        @if ($errors->has('phonenumber'))
 	                       <span class="help-block">
 	                           <strong>{{ $errors->first('phonenumber') }}</strong>
@@ -55,7 +55,7 @@
 			    <div class="col-sm-10">
 			      
 
-			      <input type="text" name="monthlysalary" placeholder="Enter salary" value="{{$employee->monthlysalary}}">
+			      <input type="text" name="monthly_salary" placeholder="Enter salary" value="{{$employee->monthlysalary}}">
                    
                    @if ($errors->has('monthlysalary'))
 	                       <span class="help-block">
@@ -87,7 +87,7 @@
 	    <label class="control-label col-sm-2" >Monthly Reductions</label>
 			    <div class="col-sm-10">
 
-			      <input type="text" name="monthlyreductions" placeholder="Enter monthlyreductions" value="{{$employee->monthlyreductions}}">
+			      <input type="text" name="monthly_reductions" placeholder="Enter monthlyreductions" value="{{$employee->monthlyreductions}}">
                    
                    @if ($errors->has('monthlyreductions'))
 	                       <span class="help-block">

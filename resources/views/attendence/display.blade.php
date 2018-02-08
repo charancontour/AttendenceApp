@@ -15,16 +15,30 @@
 @section('content')
 
        
-<div class="row" >
+
+<div class="container">
+
+
+	<div class="row"  >
 			<div class="col-md-12">
-				<a href="/attendence/create">
+				<a href="{{url('/attendence/create')}}">
 					<button type="button" class="btn btn-primary">Create Employee Attendence</button>
 				</a>
 
 			</div>
 			
-</div>
-<div class="container">
+	</div>
+	<div class="row" align="left" >
+			<div class="col-md-12">
+				<a href="{{url('/employee/create')}}">
+					<button type="button" class="btn btn-primary" class="pull-right">Add New Employee</button>
+				</a>
+
+			</div>
+			
+	</div>
+
+
 
 	<div class="row">
 			<form>

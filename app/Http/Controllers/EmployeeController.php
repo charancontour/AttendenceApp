@@ -28,11 +28,11 @@ class EmployeeController extends Controller
 
         $employee                        =   new Employee;
         $employee->name                  =   $request->name;
-        $employee->phonenumber           =   $request->phonenumber;
+        $employee->phone_number          =   $request->phone_number;
         $employee->email                 =   $request->email;
-        $employee->monthlysalary         =   $request->monthlysalary;
+        $employee->monthly_salary        =   $request->monthly_salary;
         $employee->address               =   $request->address;
-        $employee->monthlyreductions     =   $request->monthlyreductions; 
+        $employee->monthly_reductions    =   $request->monthly_reductions; 
         $employee->save();
         
         return redirect('employee');
@@ -54,11 +54,11 @@ class EmployeeController extends Controller
     {
         $employee                       =  Employee::findOrFail($id);
         $employee->name                 =  $request->name;
-        $employee->phonenumber          =  $request->phonenumber;
+        $employee->phone_number         =  $request->phone_number;
         $employee->email                =  $request->email;
-        $employee->monthlysalary        =  $request->monthlysalary;
+        $employee->monthly_salary       =  $request->monthly_salary;
         $employee->address              =  $request->address;
-        $employee->monthlyreductions    =  $request->monthlyreductions; 
+        $employee->monthly_reductions   =  $request->monthly_reductions; 
         $employee->save();
 
         return redirect('employee');

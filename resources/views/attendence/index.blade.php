@@ -12,10 +12,10 @@
 
 @section('content')
 <div class="container">
-	<div class="row">
-		<div class="col-md-12">
-			<a href="/employee">
-				<button type="button" class="btn btn-primary">Employees</button>
+	<div class="row" >
+		<div class="col-md-12" a>
+			<a href="{{url('/attendence/create')}}" class="pull-right">
+				<button type="button" class="btn btn-primary" >Create Employee Attendence</button>
 			</a>
 
 		</div>

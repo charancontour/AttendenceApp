@@ -17,50 +17,59 @@ class AttendenceController extends Controller
 		return view('attendence.index')->with('attendences',$attendences);
 	}
 
+
 	public function create()
 	{
 		$employees      =       Employee::all();
 		return view('attendence.create')->with('employees',$employees);
 	}
 
+
+
   public function store(StoreRequest $request)
   {
-   $attendence                  =     new Attendence;
-   $attendence->date            =     $request->date;
-   $attendence->workingday      =     $request->workingday;
+   $attendence                 =     new Attendence;
+   $attendence->date           =     $request->date;
+   $attendence->workingday     =     $request->workingday;
    $attendence->save();
 
    $attendence->employees()->sync($request->employee_ids);
 
 	 EmployeeSalary::calculateMonthlySalary($attendence->date);
 
-   return redirect('attendence');
+    return redirect('/attendence');
   }
+
 
   public function edit($id)
   {
     $attendence	               =       Attendence::find($id);
     $employees	               =       Employee::with('attendences')->get();
+    
     return view('attendence.edit')->with('employees',$employees)->with('attendence',$attendence);
 
   }
+
 
   public function update(UpdateRequest $request,$id)
   {
     $attendence                 =       Attendence::with('employees')->findOrFail($id);
     $attendence->date           =       $request->date;
+
     $attendence->save();
     $attendence->employees()->sync($request->employee_ids);
 		EmployeeSalary::calculateMonthlySalary($attendence->date);
-    return redirect('employee');
+    return redirect('/attendence');
   }
+
+
 
   public function delete(Request $request, $id)
   {
       $attendence               =       Attendence::with('employees')->findOrFail($id);
       $attendence->employees()->detach($request->employee_ids);
       $attendence->delete();
-      return redirect('attendence');
+      return redirect('/attendence');
   }
 
   public function display(Request $request)
