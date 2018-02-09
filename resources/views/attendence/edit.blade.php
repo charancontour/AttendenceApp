@@ -26,6 +26,9 @@
 
 	            	
 	               		<label><input type="checkbox" name="employee_ids[]" 
+	               			@if($attendence->employees->contains($employee->id))
+	               			checked = 'checked'
+	               			@endif
 	               			value="{{$employee->id}}">{{$employee->name}}</label>
 	            	
 

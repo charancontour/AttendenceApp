@@ -12,7 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{asset('css/fullcalender.css')}}" rel="stylesheet">
+    
     @yield('styleSheets')
 </head>
 <body>
@@ -82,9 +82,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{asset('js/fullcalender.js')}}"></script>
-    <script src="{{asset('js/jquery/jquery-1.10.2.js')}}"></script>
-    <script src="{{asset('js/jquery/jquery-ui.custom.mmin.js')}}"></script>
+    
     @yield('customScripts')
 </body>
 </html>

@@ -104,8 +104,20 @@ class AttendenceController extends Controller
   }
 
   public function calender()
-  {
-    return view('attendence.calender');
+  { 
+    $start_date=date('Y-m-01');
+    $end_date=date('Y-m-t',strtotime($start_date));
+    $days=date("t",strtotime($end_date));
+
+   $day_of_week = date('N', strtotime($start_date));
+  $attendences=Attendence::all();
+
+  $employees                 =       Employee::with('attendences')->get();
+  // dd($attendences);
+   
+   $date = date("Y-m-01");
+   
+    return view('attendence.calender')->with('days',$days)->with('day_of_week',$day_of_week)->with('attendences',$attendences)->with('date',$date)->with('employees',$employees);
   }
 
 
