@@ -7,16 +7,12 @@ use App\MonthlySalary;
 use App\Employee;
 class ReportController extends Controller
 {
-    //
-    public function index()
-    {
-        
-    	$monthlysalaries		=		MonthlySalary::all();
-    	$employees              =       Employee::all();
-            
-    	return view('report.index')->with('monthlysalaries',$monthlysalaries)->with('employees',$employees)
-                                                                                    ;
 
-    }
+  public function index()
+  {
+		$monthly_salaries		=		MonthlySalary::all();
+        
+        return view('report.index')->with('monthly_salaries',$monthly_salaries);
+  }
 
 }

@@ -4,41 +4,31 @@
 
 <div class="container">
 
-	<table class="table">
+	<table class="table table-bordered table-striped">
 		<thead>
-
 			<tr>
 				<th>Month</th>
 				<th>EmployeeName</th>
-	           	<th>Presentdays</th>
-	           	<th>Total Working Days</th>
-	           	<th>Basic Salary</th>
-	           	<th>Deduction</th>
-	           	<th>NetSalary</th>
-	           	
+       	<th>Presentdays</th>
+       	<th>Total Working Days</th>
+       	<th>Basic Salary</th>
+       	<th>Deduction</th>
+       	<th>NetSalary</th>
 			</tr>
-
 		</thead>
 
 		<tbody>
-			@foreach($monthlysalaries as $monthsalary)
+			@foreach($monthly_salaries as $month_salary)
 					<tr>
 
-						<td></td>
+						<td>{{$month_salary->month->format('F, Y')}}</td>
+						<td>{{$month_salary->employee->name}}</td>
+						<td>{{$month_salary->present_days}}</td>
+						<td>{{$month_salary->total_working_days}}</td>
+						<td>{{$month_salary->basic_salary}}</td>
+						<td>{{$month_salary->deduction}}</td>
+						<td>{{$month_salary->net_salary}}</td>
 
-						@foreach($employees as $employee)
-							@if($monthsalary->employee_id==$employee->id)
-					
-								<td>{{$employee->name}}</td>
-							@endif
-						@endforeach	
-					
-						<td>{{$monthsalary->present_days}}</td>
-						<td>{{$monthsalary->total_working_days}}</td>
-						<td>{{$monthsalary->basic_salary}}</td>
-						<td>{{$monthsalary->deduction}}</td>
-						<td>{{$monthsalary->net_salary}}</td>
-					
 					</tr>
 			@endforeach
 		</tbody>

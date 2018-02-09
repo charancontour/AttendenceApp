@@ -51,7 +51,8 @@ class EmployeeController extends Controller
   }
 
     public function update(UpdateRequest $request,$id)
-    {
+    {   
+
         $employee                       =  Employee::findOrFail($id);
         $employee->name                 =  $request->name;
         $employee->phone_number         =  $request->phone_number;
@@ -70,7 +71,5 @@ class EmployeeController extends Controller
     $employee->delete();
     return redirect('employee');
   }
-
-	
 
 }

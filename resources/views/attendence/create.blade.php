@@ -3,7 +3,7 @@
 <div class="container">
 	<div class="row">
 	<div class="col-md-12">
-     <div class="container">
+    <div class="container">
 	<form action="{{Request::url()}}" method="post">
 		{{csrf_field()}}
 	        <div class="page-header" align="center">
@@ -12,12 +12,11 @@
 	        <table class="table table-bordered table-striped">
 			
 			<div>
-			
-	         		<tr>
-				       		<td width="20%">	<label>Date</label></td>
+				<tr>
+      			<td width="20%">	<label>Date</label></td>
 
-				       		<td>	<input type="Date" name="date" /></td>
-	       			</tr>
+				<td>	<input type="Date" name="date" /></td>
+	       		</tr>
 	         </div>
 					
 			<div>
@@ -38,23 +37,19 @@
 			            	
 			              	<label><input type="checkbox" name="employee_ids[]" 
 			               			value="{{$employee->id}}">{{$employee->name}}</label><br>
-			          
 			        	@endforeach
 			    	</td>
 				</tr>	
 	      	</div>
 
-	      	
-
-			
 			<tr>	<td></td>
 				<td><button type="submit" class="btn btn-default">SaveAttendence</button></td>
 			</tr>
 			</table>
 
 	</form>
-</div>
-</div>
-</div>
+	</div>
+	</div>
+	</div>
 </div>
 @endsection

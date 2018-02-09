@@ -8,53 +8,35 @@
 	}
 </style>
 @stop
-
-	
-
-
 @section('content')
-
-       
 
 <div class="container">
 
 
 	<div class="row"  >
-			<div class="col-md-12">
+			
 				<a href="{{url('/attendence/create')}}">
 					<button type="button" class="btn btn-primary">Create Employee Attendence</button>
 				</a>
-
-			</div>
-			
 	</div>
-	<div class="row" align="left" >
-			<div class="col-md-12">
-				<a href="{{url('/employee/create')}}">
-					<button type="button" class="btn btn-primary" class="pull-right">Add New Employee</button>
-				</a>
-
-			</div>
-			
-	</div>
-
-
-
-	<div class="row">
+	<div class="row"><br>
 			<form>
-				<input type="date" value="{{Request::get('from_date')}}" name="from_date">
+
+			<label>Select Start Date and End Date To Search</label>	<input type="date" value="{{Request::get('from_date')}}" name="from_date">
 				<input type="date" value="{{Request::get('to_date')}}" name="to_date">
 				<input type="submit" class="btn btn-primary" value="GO">
+
 			</form>
-	</div>
+	</div><br>
 	<div class="row">
 
-		<form>
+		<form> 
+				<label>Select Year</label>
 				<select  name="year">
 					<option value="2017">2017</option>
 					<option value="2018">2018</option>
 				</select>
-				<label>select Month</label>
+				<label>Select Month</label>
 				<select name="month">
 					<option value="01">January</option>
 					<option value="02">February</option>
@@ -71,10 +53,10 @@
 				</select>
 				
 				<input type="submit" class="btn btn-primary" value="GO">
-		</form>
+		</form><br>
 
 	 	<table class="table table-bordered table-striped">
-			<thead>
+			<thead style=" background-color:lightblue">
 				<tr>
 					<th>EmployeeName</th>
 					<th>Number Of Working Days</th>
@@ -84,10 +66,11 @@
 				</tr>
 
 			</thead>
-			<tbody>
+
+			<tbody >
 				@foreach($employees as $employee)
 
-				<tr>
+				<tr style=" background-color:lightpink">
 					<td>{{$employee->name}}</td>
 
 					<td>{{$working_days}}</td>
@@ -99,14 +82,10 @@
 				</tr>
 				@endforeach
 
-				
 			</tbody>
 		</table>
 	</div>
 	
 </div>
-
-
-
 
 @stop

@@ -39,9 +39,10 @@ Route::prefix('attendence')->group(function () {
   Route::post('/edit/{id}','AttendenceController@update')->middleware('auth');
   Route::get('/delete/{id}','AttendenceController@delete')->middleware('auth');
   Route::get('/employees','AttendenceController@display')->middleware('auth');
- 
+  Route::get('/calender','AttendenceController@calender')->middleware('auth');
 
 });
 Route::prefix('report')->group(function () {
   Route::get('','ReportController@index')->middleware('auth');
+
 });

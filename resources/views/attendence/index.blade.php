@@ -11,18 +11,21 @@
 
 
 @section('content')
-<div class="container">
-	<div class="row" >
-		<div class="col-md-12" a>
-			<a href="{{url('/attendence/create')}}" class="pull-right">
-				<button type="button" class="btn btn-primary" >Create Employee Attendence</button>
-			</a>
 
+<div class="container">
+	
+		<div class="col-md-12" >
+			<a href="{{url('/attendence/create')}}" class="pull-right">
+				<button type="button" class="btn btn-primary btn-xs" >Create Employee Attendence</button>
+			</a>
 		</div>
 		
+	<div class="page-header" style="background-color:lightblue" align="center" >
+ 	 <h1>Daily Report</h1>
 	</div>
+	
 	<table class="table table-bordered table-striped">
-		<thead>
+		<thead style=" background-color:lightgreen">
 			<tr>
 				<th>Date</th>
 	           	<th>Noof presenties</th>
@@ -34,7 +37,7 @@
 		<tbody>
 			@foreach($attendences as $attendence)
 
-			<tr>
+			<tr style=" background-color:lightyellow">
 				<td>{{$attendence->date}}</td>
 				<td>{{$attendence->employees()->count()}}</td>
 				

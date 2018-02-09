@@ -45,7 +45,7 @@ class AttendenceController extends Controller
   {
     $attendence	               =       Attendence::find($id);
     $employees	               =       Employee::with('attendences')->get();
-    
+
     return view('attendence.edit')->with('employees',$employees)->with('attendence',$attendence);
 
   }
@@ -96,11 +96,16 @@ class AttendenceController extends Controller
                                 $q->where('date','<=',$to_date);
                                 }])->get();
 
-    $working_days        =        Attendence::where('workingday',1)->where('date','<=',$to_date)
+    $working_days         =       Attendence::where('workingday',1)->where('date','<=',$to_date)
                                               ->where('date','>=',$from_date)->count();
+    
+    return view('attendence.display')->with('employees',$employees)->with('working_days',$working_days) 
+                                    ;
+  }
 
-    return view('attendence.display')->with('employees',$employees)->with('working_days',$working_days) ;
-
+  public function calender()
+  {
+    return view('attendence.calender');
   }
 
 
