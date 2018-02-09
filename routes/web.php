@@ -17,6 +17,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('calender',function(){
+  return view('calender');
+});
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('employee')->group(function () {
@@ -39,7 +43,7 @@ Route::prefix('attendence')->group(function () {
   Route::post('/edit/{id}','AttendenceController@update')->middleware('auth');
   Route::get('/delete/{id}','AttendenceController@delete')->middleware('auth');
   Route::get('/employees','AttendenceController@display')->middleware('auth');
- 
+
 
 });
 Route::prefix('report')->group(function () {
