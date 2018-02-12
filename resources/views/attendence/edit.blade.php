@@ -25,14 +25,12 @@
 	         @foreach($employees as $employee)
 
 	            	
-	               		<label><input type="checkbox" name="employee_ids[]" 
-	               			@if($attendence->employees->contains($employee->id))
-	               			checked = 'checked'
-	               			@endif
-	               			value="{{$employee->id}}">{{$employee->name}}</label>
-	            	
+	        <label> <input type="checkbox" name="employee_ids[]"  value="{{$employee->id}}" 
+	         <?php  (employee_ids[]===$employee->id) ? 'checked' : '');?> >{{$employee->name}}</label>
 
 	         @endforeach
+	               
+
 			
 	      	</div>
 
