@@ -45,6 +45,7 @@ Route::prefix('attendence')->group(function () {
   Route::get('/employees','AttendenceController@display')->middleware('auth');
 
   Route::get('/calender','AttendenceController@calender')->middleware('auth');
+  
 
 
 

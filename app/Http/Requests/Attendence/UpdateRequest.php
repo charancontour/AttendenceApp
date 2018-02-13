@@ -27,7 +27,7 @@ class UpdateRequest extends FormRequest
         return [
         
             'date'              =>      'required|unique:attendences,id,'.$this->segment(3),
-            'workingday'        =>      'required',
+            'workingday'        =>      'required:attendences,workingday,'.$this->segment(3),
         ];
     }
 }

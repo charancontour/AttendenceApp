@@ -9,16 +9,28 @@
 
 			<div>
 				
-	         <div width="10%" style="background-color:lightgrey">
-	         	
-	       			<label>Date :{{$attendence->date}}</label>
+		        <div width="10%" style="background-color:lightgrey">
+		         	
+		       		<label>Date :{{$attendence->date}}</label>
 
-	       			<input type="hidden" name="date" value="{{$attendence->date}}"> 
+		       		<input type="hidden" name="date" value="{{$attendence->date}}"> 
 
-	         </div>
+		        </div>
 			
-		     </div>
-
+		    </div>
+		    <div class="form-group">
+				<label>WorkingDay</label>
+				<label><input type="checkbox" name="workingday" value="1" 
+					@if($attendence->workingday===1)
+					     checked ="checked"
+					@endif>Yes</label>
+				<label><input type="checkbox" name="workingday" value="0"
+					@if($attendence->workingday===0)
+					    checked ="checked"
+					@endif
+					>No</label>
+							      	
+			</div>
 			
 			 <div width="10%" style="background-color:pink">
 	           
@@ -26,7 +38,9 @@
 
 	            	
 	        <label> <input type="checkbox" name="employee_ids[]"  value="{{$employee->id}}" 
-	         <?php  (employee_ids[]===$employee->id) ? 'checked' : '');?> >{{$employee->name}}</label>
+	        	@if($attendence->employees->contains($employee->id))
+				 	checked ="checked"
+				@endif >{{$employee->name}}</label>
 
 	         @endforeach
 	               

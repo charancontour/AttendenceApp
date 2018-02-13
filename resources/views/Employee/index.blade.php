@@ -7,13 +7,7 @@
 @endsection
 
 @section('content')
-
-
-
-
 <div class="container">
-
-
 <div class="panel panel-success">
     <div class="panel-heading">
     	<a href="{{url('/employee/create')}}" class="pull-left">
@@ -67,7 +61,6 @@
 								       <button type="button" class="btn btn-danger">Delete</button>
 								     </a>
 								  </div>
-
 						</div>
 				    </td>
 				</tr>

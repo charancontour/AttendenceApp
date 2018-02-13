@@ -9,28 +9,28 @@
       <table class="table table-bordered table-striped" >
         <tbody  >
           <tr >
-            <td width="20%" style="background-color:lightpink">Employee Name</td>
-            <td style="background-color:lightyellow">{{$employee->name}}</td>
+            <td width="20%" >Employee Name</td>
+            <td >{{$employee->name}}</td>
           </tr>
           <tr >
-            <td style="background-color:lightpink">Phone Number</td>
-            <td style="background-color:lightyellow">{{$employee->phone_number}}</td>
+            <td >Phone Number</td>
+            <td >{{$employee->phone_number}}</td>
           </tr>
           <tr>
-            <td style="background-color:lightpink">Email</td>
-            <td style="background-color:lightyellow">{{$employee->email}}</td>
+            <td >Email</td>
+            <td >{{$employee->email}}</td>
           </tr>
           <tr>
-            <td style="background-color:lightpink">Address</td>
-            <td style="background-color:lightyellow">{{$employee->address}}</td>
+            <td >Address</td>
+            <td >{{$employee->address}}</td>
           </tr>
           <tr>
-            <td style="background-color:lightpink">Basic Salary</td>
-            <td style="background-color:lightyellow">{{$employee->monthly_salary}}</td>
+            <td >Basic Salary</td>
+            <td >{{$employee->monthly_salary}}</td>
           </tr>
            <tr>
-            <td style="background-color:lightpink">Monthly Reductions</td>
-            <td style="background-color:lightyellow">{{$employee->monthly_reductions}}</td>
+            <td >Monthly Reductions</td>
+            <td >{{$employee->monthly_reductions}}</td>
           </tr>
         </tbody>
       </table>

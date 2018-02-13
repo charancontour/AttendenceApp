@@ -11,8 +11,6 @@
 @section('content')
 
 <div class="container">
-
-
 	<div class="row"  >
 			
 				<a href="{{url('/attendence/create')}}">

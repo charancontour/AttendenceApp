@@ -39,9 +39,10 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         @if(Auth::user())
+                        
                         <li><a href="/employee">Employee</a></li>
-                        <li><a href="attendence/employees">Attendence Details</a></li>
                         <li><a href="/report">Monthly Salary Report</a></li>
+                        <li><a href="attendence/calender">Attendence</li>
                         @endif
                     </ul>
 

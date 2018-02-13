@@ -14,6 +14,7 @@ class AttendenceController extends Controller
 	public function index()
 	{
 		$attendences     =       Attendence::with('employees')->get();
+    
 		return view('attendence.index')->with('attendences',$attendences);
 	}
 
@@ -37,7 +38,7 @@ class AttendenceController extends Controller
 
 	 EmployeeSalary::calculateMonthlySalary($attendence->date);
 
-    return redirect('/attendence');
+    return redirect('/attendence/calender');
   }
 
 
@@ -53,13 +54,14 @@ class AttendenceController extends Controller
 
   public function update(UpdateRequest $request,$id)
   {
-    $attendence                 =       Attendence::with('employees')->findOrFail($id);
-    $attendence->date           =       $request->date;
-    $attendence->save();
-    $attendence->employees()->sync($request->employee_ids);
-    $attendence->save();
-		EmployeeSalary::calculateMonthlySalary($attendence->date);
-    return redirect('/attendence');
+      $attendence                 =       Attendence::with('employees')->findOrFail($id);
+      $attendence->date           =       $request->date;
+      $attendence->workingday     =       $request->workingday;
+      $attendence->save();
+      $attendence->employees()->sync($request->employee_ids);
+      $attendence->save();
+  		EmployeeSalary::calculateMonthlySalary($attendence->date);
+      return redirect('/attendence/calender');
   }
 
 
@@ -101,12 +103,13 @@ class AttendenceController extends Controller
     
     return view('attendence.display')->with('employees',$employees)->with('working_days',$working_days) 
                                     ;
+
   }
 
   public function calender(Request $request)
   { 
 
-      if ($request->has('from_date')) {
+  if ($request->has('from_date')) {
         $from_date        =     $request->from_date;
     } else {
         $from_date        =     date('Y-m-01');
@@ -123,7 +126,7 @@ class AttendenceController extends Controller
       $to_date            =     date('Y-m-t',strtotime($from_date));
     }
 
-    $employees            =     Employee::with(['attendences'=> function($q) use($from_date,$to_date){
+    $employees1            =     Employee::with(['attendences'=> function($q) use($from_date,$to_date){
                                 $q->where('date','>=',$from_date);
                                 $q->where('date','<=',$to_date);
                                 }])->get();
@@ -131,29 +134,20 @@ class AttendenceController extends Controller
     $working_days         =       Attendence::where('workingday',1)->where('date','<=',$to_date)
                                               ->where('date','>=',$from_date)->count();
 
+    $start_date           =     date('Y-m-01');
+    $end_date             =     date('Y-m-t',strtotime($start_date));
+    $days                 =     date("t",strtotime($end_date));
+    $day_of_week          =     date('N', strtotime($start_date));
+    $attendences          =     Attendence::all();
+    $employees            =     Employee::with('attendences')->get();
 
+    $date                 =     date("Y-m-01");
+    //d($pr=Attendence::with('employees')->where('date',$date)->count());
 
-
-
-
-
-
-
-    $start_date=date('Y-m-01');
-    $end_date=date('Y-m-t',strtotime($start_date));
-    $days=date("t",strtotime($end_date));
-
-   $day_of_week = date('N', strtotime($start_date));
-  $attendences=Attendence::all();
-
-  $employees                 =       Employee::with('attendences')->get();
-  // dd($attendences);
-   
-   $date = date("Y-m-01");
-    
-    return view('attendence.calender')->with('days',$days)->with('day_of_week',$day_of_week)->with('attendences',$attendences)->with('date',$date)->with('employees',$employees)->with('working_days',$working_days);
+    return view('attendence.calender')->with('days',$days)->with('day_of_week',$day_of_week)->with('attendences',$attendences)->with('date',$date)->with('employees',$employees)->with('working_days',$working_days)->
+    with('employees1',$employees1);
   }
 
-
+  
 
 }
