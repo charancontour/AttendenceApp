@@ -5,16 +5,25 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\Employee\StoreRequest;
 use App\Http\Requests\Employee\UpdateRequest;
-use App\Employee;
+
+use App\Repositories\Employee\EmployeeInterface;
 // use App\Salary;
 class EmployeeController extends Controller
 {
+  private $_employee;
 
-	   public function index()
-    {
-        $employees = Employee::all();
-        return view('Employee.index')->with('employees',$employees);
-    }
+  public function __construct(EmployeeInterface $employee)
+  {
+    return $this->_employee=$employee;
+      
+  }
+ 
+  public function index()
+  {
+    $employees = $this->_employee->getAll();
+    return view('Employee.index')->with('employees',$employees);
+  }
+
 
   public function create()
   {
@@ -22,27 +31,22 @@ class EmployeeController extends Controller
   }
 
 
-
   public function store(StoreRequest $request)
   {
 
-        $employee                        =   new Employee;
-        $employee->name                  =   $request->name;
-        $employee->phone_number          =   $request->phone_number;
-        $employee->email                 =   $request->email;
-        $employee->monthly_salary        =   $request->monthly_salary;
-        $employee->address               =   $request->address;
-        $employee->monthly_reductions    =   $request->monthly_reductions; 
-        $employee->save();
+    
+    $this->_employee->store($request);
         
-        return redirect('employee');
+    return redirect('employee');
   }
 
-    public function show($id)
-    {
-        $employee = Employee::findOrFail($id);
-        return view('Employee.details')->with('employee',$employee);
-    }
+
+  public function show($id)
+  {
+    $employee = Employee::findOrFail($id);
+    return view('Employee.details')->with('employee',$employee);
+  }
+
 
   public function edit($id)
   {
@@ -50,20 +54,22 @@ class EmployeeController extends Controller
     return view('Employee.edit')->with('employee',$employee);
   }
 
-    public function update(UpdateRequest $request,$id)
-    {   
 
-        $employee                       =  Employee::findOrFail($id);
-        $employee->name                 =  $request->name;
-        $employee->phone_number         =  $request->phone_number;
-        $employee->email                =  $request->email;
-        $employee->monthly_salary       =  $request->monthly_salary;
-        $employee->address              =  $request->address;
-        $employee->monthly_reductions   =  $request->monthly_reductions; 
-        $employee->save();
+  public function update(UpdateRequest $request,$id)
+  {   
 
-        return redirect('employee');
+    $employee                       =  Employee::findOrFail($id);
+    $employee->name                 =  $request->name;
+    $employee->phone_number         =  $request->phone_number;
+    $employee->email                =  $request->email;
+    $employee->monthly_salary       =  $request->monthly_salary;
+    $employee->address              =  $request->address;
+    $employee->monthly_reductions   =  $request->monthly_reductions; 
+    $employee->save();
+
+    return redirect('employee');
     }
+
 
   public function delete(Request $request,$id)
   {

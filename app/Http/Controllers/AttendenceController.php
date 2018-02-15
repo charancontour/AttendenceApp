@@ -44,8 +44,8 @@ class AttendenceController extends Controller
 
   public function edit($id)
   {
-    $attendence	               =       Attendence::find($id);
-    $employees	               =       Employee::with('attendences')->get();
+    $attendence	                 =       Attendence::find($id);
+    $employees	                 =       Employee::with('attendences')->get();
 
     return view('attendence.edit')->with('employees',$employees)->with('attendence',$attendence);
 
@@ -109,7 +109,7 @@ class AttendenceController extends Controller
   public function calender(Request $request)
   { 
 
-  if ($request->has('from_date')) {
+    if ($request->has('from_date')) {
         $from_date        =     $request->from_date;
     } else {
         $from_date        =     date('Y-m-01');
@@ -140,10 +140,8 @@ class AttendenceController extends Controller
     $day_of_week          =     date('N', strtotime($start_date));
     $attendences          =     Attendence::all();
     $employees            =     Employee::with('attendences')->get();
-
     $date                 =     date("Y-m-01");
-    //d($pr=Attendence::with('employees')->where('date',$date)->count());
-
+ 
     return view('attendence.calender')->with('days',$days)->with('day_of_week',$day_of_week)->with('attendences',$attendences)->with('date',$date)->with('employees',$employees)->with('working_days',$working_days)->
     with('employees1',$employees1);
   }

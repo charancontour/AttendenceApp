@@ -26,7 +26,7 @@ class StoreRequest extends FormRequest
         //dd($this->all());
         return [
             'date'         => 'required|unique:attendences',
-            'workingday'   =>'required',
+            'workingday'   => 'required',
             
         ];
     }

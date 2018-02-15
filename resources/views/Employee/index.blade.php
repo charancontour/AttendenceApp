@@ -10,12 +10,16 @@
 <div class="container">
 <div class="panel panel-success">
     <div class="panel-heading">
-    	<a href="{{url('/employee/create')}}" class="pull-left">
-				<button type="button" class="btn btn-primary" >Add New Employee </button>
-		</a>
+    	Employee List
 
     </div>
     <div class="panel-body">
+    	<div class="row">
+			<a href="{{url('/employee/create')}}" class="pull-right" style="margin-right:20px">
+				<button type="button" class="btn btn-primary" >Add New Employee </button>
+			</a>    		
+    	</div>
+    	<br>
     	<table class="table table-bordered table-striped">
 		<thead style=" background-color:lightgreen">
 

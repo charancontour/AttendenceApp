@@ -10,7 +10,7 @@ class Employee extends Model
     public function attendences()
 
     {
-            return $this->belongsToMany('App\Attendence','employee_attendence');
+        return $this->belongsToMany('App\Attendence','employee_attendence');
 
     }
    
